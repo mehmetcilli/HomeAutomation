@@ -1,25 +1,46 @@
+
 #include <ESP8266WiFi.h>
+#include <ESP8266Ping.h>
+#include <Wire.h>
 
-void setup()
-{
-  Serial.begin(115200);
+
+const char* ssid     = "Mehmet";
+const char* password = "mehmetizzy";
+IPAddress ip (192, 168, 43, 116); // adresses des serveurs de League Of Legends
+
+
+
+
+int avg_ms, x;
+String avg_ms_str;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println();
   Serial.println();
 
-  WiFi.begin("network-name", "pass-to-network");
 
-  Serial.print("Connecting");
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
+  Serial.println();
+  Serial.println("Connecting to WiFi");
+
+  WiFi.begin(ssid, password);
+
+
+  while (WiFi.status() != WL_CONNECTED) {
+
+    delay(100);
   }
-  Serial.println();
-
-  Serial.print("Connected, IP address: ");
-  Serial.println(WiFi.localIP());
 }
 
+
 void loop() {
-  
-  
+
+  if ( Ping.ping(ip, 2)) {
+    avg_ms = Ping.averageTime();
+    
+    Serial.println(avg_ms);
   }
+
+
+}
+
