@@ -1,4 +1,5 @@
 <?php
+header('Location: index.html');
 $val1 = $_POST['val1']; // A filtrer
 $val2 = $_POST['val2']; // A filtrer
 
