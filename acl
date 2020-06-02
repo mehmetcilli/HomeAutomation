@@ -1,0 +1,23 @@
+user control
+topic read $SYS/#
+topic read value/#
+topic read order/#
+topic read state/#
+
+user ref_admin
+topic write ref/#
+
+user captor
+topic write value/#
+
+user actor
+topic read order/#
+topic write state/#
+
+user system
+topic read value/#
+topic write order/#
+topic read state/#
+
+user user
+topic read value/#
